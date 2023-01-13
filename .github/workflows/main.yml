@@ -17,5 +17,6 @@ jobs:
       - uses: ./.github/actions/yarn-install-and-cache
 
   test:
+    permissions: write-all
     needs: yarn_install_and_cache
     uses: ./.github/workflows/test.yml
