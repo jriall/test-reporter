@@ -1,0 +1,21 @@
+name: Test
+on: workflow_call
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.1.0
+      - uses: ./.github/actions/yarn-install-and-cache
+      - name: Run tests
+        run: yarn test:ci
+      - uses: ./.github/actions/upload_artifacts
+        if: failure()
+
+      - name: Test Summary
+        # if: failure()
+        uses: dorny/test-reporter@v1
+        with:
+          name: JEST Tests
+          paths: reports/junit/js-test-results.xml
+          reporter: jest-junit

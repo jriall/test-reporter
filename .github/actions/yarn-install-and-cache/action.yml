@@ -1,0 +1,22 @@
+name: Yarn Install
+description: Installs and caches using yarn
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v3
+      with:
+        cache: yarn
+        registry-url: https://npm.pkg.github.com
+        node-version: 16
+    - name: Cache node modules
+      uses: actions/cache@v3
+      with:
+        key: yarn-{{ hashFiles('.nvmrc') }}-{{ hashFiles('/tmp/packages.md5') }}
+        restore-keys: yarn-{{ hashFiles('.nvmrc') }}
+        path: node_modules
+    - name: Install Dependencies
+      shell: bash
+      run: yarn install --frozen-lockfile
+      env:
+        NODE_ENV: development
