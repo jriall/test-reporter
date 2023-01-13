@@ -1,11 +1,9 @@
-it("fails intentionally", () => {
-  expect(true).toBe(false);
-});
+describe("My lovely test suite", () => {
+  it("does a thing successfully", () => {
+    expect(true).toBe(true);
+  });
 
-it("passes intentionally", () => {
-  expect(true).toBe(true);
-});
-
-it("another one passes intentionally", () => {
-  expect(true).toBe(true);
+  it("doesn't shit the bed", () => {
+    expect(true).toBe(true);
+  });
 });
