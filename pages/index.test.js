@@ -5,3 +5,7 @@ it("fails intentionally", () => {
 it("passes intentionally", () => {
   expect(true).toBe(true);
 });
+
+it("another one passes intentionally", () => {
+  expect(true).toBe(true);
+});
