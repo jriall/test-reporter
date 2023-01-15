@@ -4,7 +4,7 @@ module.exports = {
   reporters: [
     [
       "jest-junit",
-      { outputDirectory: "reports/junit", outputName: "js-test-results.xml" },
+      { outputDirectory: "reports", outputName: "js-test-results.xml" },
     ],
     [
       "jest-silent-reporter",

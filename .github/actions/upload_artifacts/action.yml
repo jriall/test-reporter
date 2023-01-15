@@ -6,4 +6,4 @@ runs:
     - uses: actions/upload-artifact@v3
       with:
         name: ci_artifacts
-        path: reports/junit
+        path: reports

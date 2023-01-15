@@ -5,11 +5,6 @@ concurrency:
   # Running a new pipeline will cancel any running pipelines that belong to the above group
   cancel-in-progress: true
 
-permissions:
-  contents: read
-  # We need write access to the id-token so we can use workload identity federation in our checks
-  id-token: write
-
 on:
   pull_request:
     types: [opened, synchronize, reopened, edited, ready_for_review]
@@ -22,5 +17,6 @@ jobs:
       - uses: ./.github/actions/yarn-install-and-cache
 
   test:
+    permissions: write-all
     needs: yarn_install_and_cache
     uses: ./.github/workflows/test.yml
